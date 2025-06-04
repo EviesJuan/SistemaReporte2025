@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orden de Trabajo</title>
+  <link rel="stylesheet" href="styles3.css" />
+</head>
+<body>
+
+  <!-- Protección de acceso -->
+  <script>
+    if (localStorage.getItem("loggedIn3") !== "true") {
+      window.location.href = "login3.html";
+    }
+  </script>
+
+  <div id="work-order">
+    <header>
+      <h2>ORDEN DE TRABAJO</h2>
+      <p class="fecha">Fecha: <span id="fecha"></span></p>
+    </header>
+
+    <section class="form-grid">
+      <div><label>Cuadrilla:</label><input type="text" id="cuadrilla" /></div>
+
+      <label for="instalacion">Instalación:</label>
+      <select id="instalacion" name="instalacion" required>
+        <!-- Opciones predeterminadas -->
+        <option value="Acarigua I 115 KV">Acarigua I 115 KV</option>
+        <option value="Acarigua II">Acarigua II</option>
+        <option value="Acarigua II 230">Acarigua II 230 KV</option>
+        <option value="Araure">Araure</option>
+        <option value="Turen">Turen</option>
+        <option value="Turen II">Turen II</option>
+        <option value="Guanare">Guanare</option>
+        <option value="Las Flores">Las Flores</option>
+        <option value="Ospino">Ospino</option>
+        <option value="San Rafael">San Rafael</option>
+        <option value="Biscucuy">Biscucuy</option>
+        <option value="Barinas IV">Barinas IV</option>
+        <option value="Cabudare">Cabudare</option>
+        <option value="Playon">Playon</option>
+      </select>
+
+      <div>
+        <label>Líneas:</label>
+        <select id="descripcionEquipo">
+          <!-- Opciones de líneas -->
+          <option value="Acarigua I - Ospino">Acarigua I - Ospino</option>
+          <option value="Acarigua II - Acarigua I">Acarigua II - Acarigua I T1</option>
+          <option value="Acarigua II - Acarigua I">Acarigua II - Acarigua I T2</option>
+          <option value="Guanare Central">Acarigua II - Araure</option>
+          <option value="Acarigua II - San Rafeal">Acarigua II - San Rafael</option>
+          <option value="Acarigua II - Turen II">Acarigua II - Turen II</option>
+          <option value="Araure - Guanare">Araure - Guanare</option>
+          <option value="Cabudare - Acarigua I">Cabudare - Acarigua I</option>
+          <option value="Las Flores - Biscucuy">Las Flores - Biscucuy</option>
+          <option value="Guanare - Las Flores">Guanare - Las Flores</option>
+          <option value="Ospino - Guanare">Ospino - Guanare</option>
+          <option value="Turen - Playon">Turen - Playon</option>
+          <option value="Turen II - Turen">Turen II - Turen</option>
+          <option value="Acarigua II - Barinas IV 230KV">Acarigua II - Barinas IV 230KV</option>
+          <option value="Acarigua II - Las Flores 230KV">Acarigua II - Las Flores 230KV</option>
+          <option value="Las Flores - Barinas IV 230KV">Las Flores - Barinas IV 230KV</option>
+        </select>
+      </div>
+
+      <div><label>Descripción del Trabajo:</label><textarea id="descripcionTrabajo"></textarea></div>
+      <div><label>Caporal:</label><input type="text" id="caporal" placeholder="Nombre" /></div>
+      <div><label>Permiso de Trabajo:</label><input type="text" id="permiso" placeholder="Firma" /></div>
+      <div><label>Supervisión Inmediata:</label><input type="text" id="supervision" /></div>
+    </section>
+
+    <section class="section-tipo">
+      <h4>TIPO / SITIO DE TRABAJO / TRABAJO EN CALIENTE / PRIORIDAD DE RUTINA / FECHA RECURRIDA</h4>
+      <div class="tabla-tipo">
+        <div><label for="tipo1">Preventivo</label><input type="text" id="tipo1" /></div>
+        <div><label for="tipo2">Descripción</label><input type="text" id="tipo2" /></div>
+        <div><label for="tipo3">Trabajo Caliente</label><input type="text" id="tipo3" /></div>
+        <div><label for="tipo4">Urgente</label><input type="text" id="tipo4" /></div>
+        <div><label for="tipo5">Desde El:</label><input type="text" id="tipo5" /></div>
+      </div>
+    </section>
+
+    <section class="section-semanal">
+      <table id="tabla-semanal">
+        <tr><th>Día</th><th>Actividad</th><th>Responsable</th><th>Firma</th></tr>
+        <tr><td>Lunes</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Martes</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Miércoles</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Jueves</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Viernes</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Sábado</td><td><input /></td><td><input /></td><td><input /></td></tr>
+        <tr><td>Domingo</td><td><input /></td><td><input /></td><td><input /></td></tr>
+      </table>
+    </section>
+
+    <section class="observaciones">
+      <label>Observaciones:</label>
+      <textarea id="observaciones"></textarea>
+    </section>
+
+    <footer>
+      <p>Departamento de Línea</p>
+    </footer>
+  </div>
+
+  <!-- Botones Generar PDF y Cerrar sesión -->
+  <div class="button-container">
+    <button id="generate-pdf">Generar PDF</button>
+    <button id="logoutBtn">Cerrar sesión</button>
+  </div>
+
+  <!-- Imágenes ocultas -->
+  <img id="img-header" src="imagen/htl16.PNG" style="display: none;" />
+  <img id="img-footer" src="imagen/imagen3.PNG" style="display: none;" />
+
+  <!-- Scripts PDF y logout -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <script src="script3.js"></script>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      localStorage.removeItem("loggedIn3");
+      window.location.href = "login3.html";
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

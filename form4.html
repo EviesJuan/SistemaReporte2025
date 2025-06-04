@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orden de Trabajo</title>
+  <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+  <script>
+    // Control de acceso
+    if (!localStorage.getItem("loggedIn4")) {
+      window.location.href = "login4.html";
+    }
+  </script>
+
+  <div class="page-container">
+    <header>
+      <h1>ORDEN DE TRABAJO</h1>
+      <img id="img-header" src="imagen/htl16.PNG" style="display:none;" />
+    </header>
+
+    <!-- Sección 1: Fecha / OTNo / Consignación (3x1) -->
+    <section class="section-box">
+      <h2>Datos Generales</h2>
+      <div class="row">
+        <label>Fecha: <input type="text" id="fecha" name="fecha"></label>
+        <label>O/TNo: <input type="text" id="otno" name="otno"></label>
+        <label># Consignación: <input type="text" id="codigoConsig" name="codigoConsig"></label>
+      </div>
+
+      <div class="row">
+        <label for="Equipos">Equipos:</label>
+        <select name="Equipos:" id="Equipos"></select>
+      </div>
+
+      <div class="row">
+        <label>Unidad: <input type="text" id="unidad" name="unidad"></label>
+        <label for="mtto">Instalacion</label>
+        <select id="mtto" name="mtto" required>
+          <option value="Acarigua I 115 KV">Acarigua I 115 KV</option>
+          <option value="Acarigua II">Acarigua II</option>
+          <option value="Acarigua II 230">Acarigua II 230</option>
+          <option value="Araure">Araure</option>
+          <option value="Turen">Turen</option>
+          <option value="Turen II">Turen II</option>
+          <option value="Guanare">Guanare</option>
+          <option value="Las Flores">Las Flores</option>
+          <option value="Ospino">Ospino</option>
+          <option value="San Rafael">San Rafael</option>
+          <option value="Biscucuy">Biscucuy</option>
+          <option value="Playon 230 KV">Playon 230 KV</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>Lugar de trabajo: <input type="text" id="lugarTrabajo" name="lugarTrabajo"></label>
+      </div>
+
+      <div class="row">
+        <label>Trabajo(s) a realizar: <input type="text" id="trabajoRealizar" name="trabajoRealizar"></label>
+      </div>
+    </section>
+
+    <section class="section-box">
+      <h2>Detalle de Trabajo</h2>
+      <label>Trabajo(s) realizado(s):</label>
+      <textarea id="trabajoRealizado" name="trabajoRealizado"></textarea>
+      <label>Trabajo(s) pendiente(s) por realizar:</label>
+      <textarea id="trabajoPendiente" name="trabajoPendiente"></textarea>
+    </section>
+
+    <section class="section-box">
+      <h2>Recursos</h2>
+      <div class="row">
+        <label>Vehículo(s) utilizado(s): <input type="text" id="vehiculosUtilizados" name="vehiculosUtilizados"></label>
+        <label># de Personal: <input type="text" id="personalNumero" name="personalNumero"></label>
+        <label>Tiempo de Jornada: <input type="text" id="tiempoJornada" name="tiempoJornada"></label>
+      </div>
+      <div class="row">
+        <label>Nombre y Apellido: <input type="text" id="nombres" name="nombres"></label>
+        <label>Inicio: <input type="text" id="inicio" name="inicio"></label>
+        <label>Fin: <input type="text" id="fin" name="fin"></label>
+      </div>
+    </section>
+
+    <section class="section-box">
+      <h2>Caporal / Permiso / Supervisión</h2>
+      <div class="row">
+        <label>Caporal: <input type="text" id="caporal" name="caporal"></label>
+        <label>Permiso de Trabajo: <input type="text" id="permiso" name="permiso"></label>
+        <label>Supervisión Inmediata: <input type="text" id="supervision" name="supervision"></label>
+      </div>
+    </section>
+
+    <section class="section-box">
+      <h2>Observaciones</h2>
+      <textarea id="observaciones" name="observaciones"></textarea>
+    </section>
+
+    <footer>
+      <img id="img-footer" src="imagen/imagen3.PNG" style="display:none;" />
+      <button id="generate-pdf">Generar PDF</button>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script4.js"></script>
+
+  <script>
+    // Botón de cerrar sesión
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      localStorage.removeItem("loggedIn4");
+      window.location.href = "login4.html";
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Orden de Trabajo</title>
+  <link rel="stylesheet" href="styles7.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <!-- Protección: Solo permite acceso si el usuario ha iniciado sesión -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login7.html";
+    }
+  </script>
+
+  <header>
+    <h1>Orden De Trabajo</h1>
+  </header>
+
+  <main>
+    <form id="form1">
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha">
+
+      <label for="instalacion">Instalación:</label>
+      <select id="instalacion" name="instalacion" required>
+        <option value="">Seleccione</option>
+        <option value="Acarigua I 115 KV">Acarigua I 115 KV</option>
+        <option value="Acarigua II">Acarigua II</option>
+        <option value="Acarigua II 230">Acarigua II 230</option>
+        <option value="Araure">Araure</option>
+        <option value="Turen">Turen</option>
+        <option value="Turen II">Turen II</option>
+        <option value="Guanare">Guanare</option>
+        <option value="Las Flores">Las Flores</option>
+        <option value="Ospino">Ospino</option>
+        <option value="San Rafael">San Rafael</option>
+        <option value="Biscucuy">Biscucuy</option>
+        <option value="Cabudare">Cabudare</option>
+        <option value="Playon">Playon</option>
+      </select>
+
+      <label for="descripcionEquipo">Líneas:</label>
+      <select id="descripcionEquipo" name="Lineas" required>
+        <option value="">Seleccione</option>
+        <option value="Acarigua I - Ospino">Acarigua I - Ospino</option>
+        <option value="Acarigua II - Acarigua I">Acarigua II - Acarigua I T1</option>
+        <option value="Acarigua II - Acarigua I">Acarigua II - Acarigua I T2</option>
+        <option value="Guanare Central">Acarigua II - Araure</option>
+        <option value="Acarigua II - San Rafael">Acarigua II - San Rafael</option>
+        <option value="Acarigua II - Turen II">Acarigua II - Turen II</option>
+        <option value="Araure - Guanare">Araure - Guanare</option>
+        <option value="Cabudare - Acarigua I">Cabudare - Acarigua I</option>
+        <option value="Las Flores - Biscucuy">Las Flores - Biscucuy</option>
+        <option value="Guanare - Las Flores">Guanare - Las Flores</option>
+        <option value="Ospino - Guanare">Ospino - Guanare</option>
+        <option value="Turen - Playon">Turen - Playon</option>
+        <option value="Turen II - Turen">Turen II - Turen</option>
+        <option value="Acarigua II - Barinas IV 230KV">Acarigua II - Barinas IV 230KV</option>
+        <option value="Acarigua II - Las Flores 230KV">Acarigua II - Las Flores 230KV</option>
+        <option value="Las Flores - Barinas IV 230KV">Las Flores - Barinas IV 230KV</option>
+      </select>
+
+      <label for="equipo">Equipo:</label>
+      <input type="text" id="equipo" name="equipo"> 
+
+      <label for="inicio">Inicio:</label>
+      <input type="text" id="inicio" name="inicio">
+
+      <label for="fin">Fin:</label>
+      <input type="text" id="fin" name="fin">
+
+      <label for="orden">N° Permiso y/o Orden de Trabajo:</label>
+      <input type="text" id="orden" name="orden">
+ 
+      <label for="descripcion">Descripción del trabajo:</label>
+      <textarea id="descripcion" name="descripcion"></textarea>
+
+      <label for="consecuencias">Consecuencias:</label>
+      <textarea id="consecuencias" name="consecuencias"></textarea>
+
+      <label for="pendiente">Actividad Pendiente:</label>
+      <textarea id="pendiente" name="pendiente"></textarea>
+
+      <label for="material">Material o equipo pendiente:</label>
+      <textarea id="material" name="material"></textarea>
+
+      <label for="observacion">Observación:</label>
+      <textarea id="observacion" name="observacion"></textarea>
+
+      <div class="button-group">
+        <button type="submit">Generar PDF</button>
+        <button type="button" onclick="logout()">Cerrar sesión</button>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; Departamento de Protección</p>
+  </footer>
+
+  <!-- Lógica para cerrar sesión -->
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login7.html";
+    }
+  </script>
+
+  <script src="script7.js"></script>
+</body>
+</html>
+
+
+
+
+
+

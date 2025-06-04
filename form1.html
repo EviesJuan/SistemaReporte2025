@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orden de Trabajo</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Cargar jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.22/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+  <!-- Protección: Solo permite acceso si el usuario ha iniciado sesión -->
+  <script>
+    if (localStorage.getItem("loggedIn1") !== "true") {
+      window.location.href = "login1.html";
+    }
+  </script>
+
+  <header>
+    <h1>Orden De Trabajo</h1>
+  </header>
+
+  <main>
+    <form id="form1">
+      <label for="permisoConsignacion">Permiso de Consignación:</label>
+      <input type="text" id="permisoConsignacion" name="permisoConsignacion" required>
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required lang="es">
+
+      <label for="dia">Día:</label>
+      <input type="text" id="dia" name="dia" required>
+
+      <label for="instalacion">Instalación:</label>
+      <select id="instalacion" name="instalacion" required>
+        <!-- opciones -->
+      </select>
+
+      <label for="linea">Líneas:</label>
+      <select id="linea" name="linea" required>
+        <!-- opciones -->
+      </select>
+
+      <label for="Equipo">Equipos:</label>
+      <select id="Equipo" name="Equipo" required>
+        <!-- se puede poblar dinámicamente si deseas -->
+      </select>
+
+      <label for="vehiculo">Vehículo:</label>
+      <input type="text" id="vehiculo" name="vehiculo" required>
+
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" name="modelo" required>
+
+      <label for="placa">Placa:</label>
+      <input type="text" id="placa" name="placa" required>
+
+      <button type="submit">Generar PDF</button>
+    </form>
+  </main>
+
+  <footer>
+    <button onclick="logout()">Cerrar sesión</button>
+  </footer>
+
+  <!-- Lógica para cerrar sesión -->
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedIn1");
+      window.location.href = "login1.html";
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
